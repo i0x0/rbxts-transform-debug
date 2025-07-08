@@ -1,6 +1,14 @@
 # rbxts-transform-debug
 A debugging transformer for roblox-ts. Contains helper functions for debugging roblox-ts code with debug information attached.
 
+> [!IMPORTANT]  
+> **For its-a-bit-random:**  
+> This package is not published under our registry,
+> instead install it through `github:` in npm:  
+> ```json
+> "rbxts-transform-debug": "github:its-a-bit-random/rbxts-transform-debug"
+> ```
+
 ## How it works
 
 Say we have this example code:
