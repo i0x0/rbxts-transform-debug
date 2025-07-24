@@ -26,12 +26,10 @@ export const WarnMacro: CallMacro = {
 	transform(state: TransformState, node: ts.CallExpression) {
 		const { enabled } = state.config;
 
-		return enabled
-			? factory.updateCallExpression(node, factory.createIdentifier("warn"), undefined, [
+		return factory.updateCallExpression(node, factory.createIdentifier("warn"), undefined, [
 					createDebugPrefixLiteral(node),
 					...node.arguments,
 				])
-			: factory.createVoidExpression(factory.createIdentifier("undefined"));
 	},
 };
 
@@ -40,13 +38,9 @@ export const ErrorMacro: CallMacro = {
 		return state.symbolProvider.moduleFile!.get("$error");
 	},
 	transform(state: TransformState, node: ts.CallExpression) {
-		const { enabled } = state.config;
-
-		return enabled
-			? factory.updateCallExpression(node, factory.createIdentifier("error"), undefined, [
+		return factory.updateCallExpression(node, factory.createIdentifier("error"), undefined, [
 					createErrorPrefixLiteral(node),
 					...node.arguments.slice(1),
 				])
-			: factory.createVoidExpression(factory.createIdentifier("undefined"));
 	},
 };
